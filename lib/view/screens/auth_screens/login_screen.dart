@@ -40,28 +40,6 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 
-  void getUserFromLocalStorage(BuildContext context) async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    String? userDataString = prefs.getString("user_data");
-    userSD = userDataString;
-    if(userSD != null){
-      Navigator.pushNamedAndRemoveUntil(context, kAllProductScreenRoute, (route) => false,);
-    } else {
-      // Navigator.pushNamed(context, kSignInScreenRoute);
-    }
-  }
-
-  @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-    Future.microtask(() {
-      getUserFromLocalStorage(context);
-
-    });
-
-  }
-
 
 
   @override

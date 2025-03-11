@@ -8,10 +8,13 @@ import 'package:ecommerce_app/view/screens/auth_screens/login_screen.dart';
 import 'package:ecommerce_app/utils/app_strings.dart';
 
 import '../view/models/product_model/product_model.dart';
+import '../view/screens/auth_screens/splash_screen.dart';
 
 class RouteGenerator {
   static Route<dynamic>? generateRoute(RouteSettings settings) {
     switch (settings.name) {
+      case kSplashScreenRoute:
+        return _noTransitionRoute(const SplashScreen());
       case kSignInScreenRoute:
         return _noTransitionRoute(const LoginScreen());
       case kSignupScreenRoute:
@@ -24,7 +27,7 @@ class RouteGenerator {
       case kMyCartScreenRoute:
         return _noTransitionRoute(const MyCartScreen());
       case kProfileScreenRoute:
-        return _noTransitionRoute( ProfileScreen());
+        return _noTransitionRoute(ProfileScreen());
       default:
         return _noTransitionRoute(
           const Scaffold(body: Center(child: Text("Page Not Found"))),

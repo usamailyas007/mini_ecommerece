@@ -44,6 +44,13 @@ class AuthProvider extends ChangeNotifier {
   bool get isLoadingLogin => _isLoadingLogin;
   bool isLoadingGoogleLogin = false;
 
+  double imageSizeHeight = 200;
+
+  void expandLogo() {
+    imageSizeHeight = 200;
+    notifyListeners();
+  }
+
   // =============Sign up with email function==============
   Future<Map<String, dynamic>?> signUpWithEmail(BuildContext context) async {
     String email = emailController.text.trim();

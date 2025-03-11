@@ -113,7 +113,7 @@ class MyApp extends StatelessWidget {
             title: kAppName,
             debugShowCheckedModeBanner: false,
             theme: _buildTheme(Brightness.light),
-            initialRoute: kSignInScreenRoute,
+            initialRoute: kSplashScreenRoute,
             onGenerateRoute: RouteGenerator.generateRoute,
             localizationsDelegates: context.localizationDelegates,
             supportedLocales: context.supportedLocales,
