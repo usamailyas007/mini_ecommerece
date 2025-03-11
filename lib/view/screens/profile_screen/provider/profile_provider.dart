@@ -22,6 +22,7 @@ class ProfileProvider extends ChangeNotifier {
 
   final ImagePicker _picker = ImagePicker();
 
+  //  ====================Pick Image From Gallery Function==============
   Future<void> pickImageFromGallery() async {
     final pickedFile = await _picker.pickImage(source: ImageSource.gallery);
     if (pickedFile != null) {
@@ -41,6 +42,7 @@ class ProfileProvider extends ChangeNotifier {
     }
   }
 
+  //  ====================Load User Data From Local====================
   Future<void> loadUserData() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     String? userDataString = prefs.getString("user_data");
@@ -57,6 +59,7 @@ class ProfileProvider extends ChangeNotifier {
     }
   }
 
+  //  ====================Update User Profile Function====================
   Future<void> updateUser(UserModel updatedUser) async {
     _isLoading = true;
     notifyListeners();
@@ -70,7 +73,7 @@ class ProfileProvider extends ChangeNotifier {
             name: updatedUser.name,
             email: updatedUser.email,
             phoneNumber: updatedUser.phoneNumber,
-            profilePicture: imageUrl,
+            profilePicture: "",
           );
         }
       }

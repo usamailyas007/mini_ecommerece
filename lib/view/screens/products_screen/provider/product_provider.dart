@@ -40,6 +40,7 @@ class ProductProvider extends ChangeNotifier {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
   final FirebaseAuth _auth = FirebaseAuth.instance;
 
+  // ====================Get User Current Location====================
   Future<void> getUserLocation() async {
     _isLoading = true;
     notifyListeners();
@@ -64,6 +65,7 @@ class ProductProvider extends ChangeNotifier {
     }
   }
 
+  // ====================Search Products Function====================
   void searchProducts(String query) {
     _searchQuery = query;
     if (query.isEmpty) {
@@ -92,6 +94,7 @@ class ProductProvider extends ChangeNotifier {
     }
   }
 
+  // ==================== Fetch Products from firebase====================
   Future<void> fetchProducts() async {
     _isLoading = true;
     notifyListeners();
@@ -112,6 +115,7 @@ class ProductProvider extends ChangeNotifier {
     notifyListeners();
   }
 
+  // ====================Logout function====================
   Future<void> logoutUser(BuildContext context) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     await prefs.remove("user_data");
@@ -120,6 +124,7 @@ class ProductProvider extends ChangeNotifier {
     Navigator.pushNamedAndRemoveUntil(context, kSignInScreenRoute, (route) => false);
   }
 
+  // ====================Add to Cart Function====================
   Future<void> addToCart(ProductModel product, int quantity) async {
     try {
       _isLoading = true;
@@ -181,6 +186,7 @@ class ProductProvider extends ChangeNotifier {
     }
   }
 
+  // ====================Fetch Cart Products of User from firebase====================
   Future<void> fetchCartProducts() async {
     try {
       _isLoadingCart = true;
@@ -208,6 +214,7 @@ class ProductProvider extends ChangeNotifier {
     }
   }
 
+  // ====================update quantity====================
   Future<void> updateCartQuantity(ProductModel product, int change) async {
     try {
       String userId = FirebaseAuth.instance.currentUser!.uid;
@@ -246,6 +253,7 @@ class ProductProvider extends ChangeNotifier {
     }
   }
 
+  // ====================remove cart product====================
   Future<void> removeFromCart(ProductModel product) async {
     try {
       _isLoadingCart = true;
@@ -282,6 +290,7 @@ class ProductProvider extends ChangeNotifier {
     }
   }
 
+  // ====================clear cart====================
   Future<void> clearCart() async {
     try {
       String userId = FirebaseAuth.instance.currentUser!.uid;
@@ -313,6 +322,7 @@ class ProductProvider extends ChangeNotifier {
     }
   }
 
+  // ====================calculate total price====================
   double getTotalCartPrice() {
     return _cartProducts.fold(0.0, (sum, item) {
       int quantity = int.tryParse(item.quantity) ?? 0;
@@ -320,6 +330,7 @@ class ProductProvider extends ChangeNotifier {
     });
   }
 
+  // ====================fetch total cart items count of a user====================
   Future<void> fetchCartItemCount() async {
     try {
       String userId = FirebaseAuth.instance.currentUser!.uid;

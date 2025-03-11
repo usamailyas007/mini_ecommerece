@@ -24,6 +24,7 @@ class _SplashScreenState extends State<SplashScreen> {
     });
   }
 
+  // =============== Get User Data from local ===========
   void getUserFromLocalStorage(BuildContext context) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     String? userDataString = prefs.getString("user_data");

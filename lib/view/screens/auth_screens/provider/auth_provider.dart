@@ -197,6 +197,7 @@ class AuthProvider extends ChangeNotifier {
     return null;
   }
 
+  // =================Login with Google==============
   Future<void> loginWithGoogle(BuildContext context) async {
     try {
       isLoadingGoogleLogin = true;
